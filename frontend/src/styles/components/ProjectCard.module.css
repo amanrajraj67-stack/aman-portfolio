@@ -1,0 +1,256 @@
+.projectCard {
+    display: flex;
+    flex-direction: column;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.3, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    height: 100%;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    color: inherit;
+}
+
+.projectCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.5), 0 0 24px rgba(56, 189, 248, 0.15);
+    border-color: rgba(56, 189, 248, 0.45);
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+    background: rgba(10, 15, 25, 0.8);
+}
+
+.projectImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.placeholderImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholderImage span {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #38bdf8;
+}
+
+.projectCard:hover .projectImage {
+    transform: scale(1.05);
+}
+
+/* Subtle Status Badge */
+.statusBadge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 2;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Card Like Badge */
+.cardLikeBadge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    z-index: 3;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(244, 63, 94, 0.35);
+    color: #fda4af;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+}
+
+.cardLikeBadge:hover {
+    background: #f43f5e;
+    color: #ffffff;
+    border-color: #f43f5e;
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(244, 63, 94, 0.4);
+}
+
+.cardLikeBadge .heartIcon {
+    color: #f43f5e;
+    font-size: 0.8rem;
+    transition: color 0.2s ease;
+}
+
+.cardLikeBadge:hover .heartIcon {
+    color: #ffffff;
+}
+
+.cardLikeActive {
+    background: rgba(244, 63, 94, 0.25);
+    border-color: #f43f5e;
+    color: #ffffff;
+}
+
+.cardLikeActive .heartIcon {
+    color: #ffffff;
+}
+
+.statusCompleted {
+    background: rgba(10, 20, 15, 0.8);
+    color: #4ade80;
+    border: 1px solid rgba(74, 222, 128, 0.4);
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+}
+
+.statusInProgress {
+    background: rgba(25, 20, 10, 0.8);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.4);
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+}
+
+/* Media Badge */
+.mediaBadge {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(10, 15, 25, 0.75);
+    color: #ffffff;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Card Content */
+.cardContent {
+    padding: 22px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.3;
+    transition: color 0.2s ease;
+}
+
+.projectCard:hover .title {
+    color: #38bdf8;
+}
+
+.description {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.55;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Action Buttons - Solid Sky Blue & Glass */
+.actions {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: 6px;
+}
+
+.actionButton {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.liveButton {
+    background: #0284c7;
+    color: #ffffff;
+    border: 1px solid #38bdf8;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+.liveButton:hover {
+    background: #0ea5e9;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(14, 165, 233, 0.45);
+}
+
+.githubButton {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.githubButton:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+    .cardContent {
+        padding: 18px;
+    }
+    
+    .title {
+        font-size: 1.15rem;
+    }
+}

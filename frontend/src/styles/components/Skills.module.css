@@ -1,0 +1,127 @@
+.skillsSection {
+    padding: var(--spacing-4xl) 0;
+    background: transparent;
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.sectionHeader {
+    text-align: center;
+    margin: 0 auto var(--spacing-3xl);
+    max-width: 800px;
+}
+
+.title {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+}
+
+.skillsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-2xl);
+    width: 100%;
+    justify-content: center;
+}
+
+.skillCategory {
+    background: var(--bg-secondary);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
+    transition: transform var(--transition-normal);
+}
+
+.skillCategory:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.categoryTitle {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-lg);
+    color: var(--accent-primary);
+    text-align: center;
+}
+
+.skillList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.skillItem {
+    width: 100%;
+}
+
+.skillInfo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+}
+
+.progressBar {
+    width: 100%;
+    height: 8px;
+    background: var(--bg-tertiary);
+    border-radius: var(--border-radius-full);
+    overflow: hidden;
+}
+
+@keyframes fillProgress {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: var(--border-radius-full);
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0;
+    /*Start at 0*/
+}
+
+
+
+/* We need a mechanism to trigger this width change. 
+   Since we don't have per-item scroll tracking specifically for the width property in JS yet (only general fade), 
+   we can rely on the parent .animate-on-scroll.visible to trigger it if we structure it right.
+*/
+:global(.animate-on-scroll.visible) .progressFill {
+    /* The width will be set inline by React, but we rely on transition. 
+       However, if inline style sets width, we need to ensure it animates from 0.
+       Actually, standard simple way without JS change: use animation. 
+    */
+    animation: fillProgress 1.5s ease-out forwards;
+}
+
+@media (max-width: 768px) {
+    .skillsGrid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+}
+
+@media (min-width: 769px) {
+    .skillsGrid {
+        max-width: 1200px;
+    }
+}
