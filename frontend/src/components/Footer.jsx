@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaCode } from 'react-icons/fa';
+import { SiLeetcode } from 'react-icons/si';
 import portfolioConfig from '../config/portfolioConfig';
 import styles from '../styles/components/Footer.module.css';
 
@@ -29,6 +30,11 @@ const Footer = () => {
                         {portfolioConfig.socialLinks?.linkedin && (
                             <a href={portfolioConfig.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
                                 <FaLinkedin />
+                            </a>
+                        )}
+                        {portfolioConfig.socialLinks?.leetcode && (
+                            <a href={portfolioConfig.socialLinks.leetcode} target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LeetCode">
+                                <SiLeetcode />
                             </a>
                         )}
                         {portfolioConfig.socialLinks?.instagram && (

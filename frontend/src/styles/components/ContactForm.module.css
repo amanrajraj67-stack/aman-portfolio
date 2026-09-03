@@ -1,5 +1,5 @@
 .contactSection {
-    padding: var(--spacing-4xl) 0 40px 0;
+    padding: var(--spacing-4xl) 0;
     background: transparent;
     width: 100%;
     position: relative;
@@ -29,23 +29,25 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 5px 14px;
-    border-radius: 50px;
-    background: rgba(14, 165, 233, 0.1);
-    border: 1px solid #38bdf8;
-    color: #38bdf8;
+    padding: 6px 16px;
+    border-radius: var(--border-radius-full);
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: var(--accent-primary-hover);
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     margin-bottom: 12px;
+    box-shadow: 0 0 16px rgba(212, 175, 55, 0.1);
 }
 
 .liveDot {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #38bdf8;
+    background: #f5d061;
+    box-shadow: 0 0 8px #f5d061;
 }
 
 .title {
@@ -53,35 +55,30 @@
     font-weight: 800;
     color: #ffffff;
     margin-bottom: 8px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .subtitle {
     font-size: 1.05rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-secondary);
     line-height: 1.5;
 }
 
-/* ==========================================================================
-   macOS Window Frame
-   ========================================================================== */
+/* macOS Window Frame */
 .macWindow {
     width: 100%;
-    background: rgba(13, 17, 23, 0.78);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(12, 12, 16, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.25);
     border-radius: 20px;
-    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55),
-                0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.75), 0 0 25px rgba(212, 175, 55, 0.08);
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all var(--transition-normal);
 }
 
 .macWindow:hover {
-    border-color: rgba(255, 255, 255, 0.22);
-    box-shadow: 0 28px 72px rgba(0, 0, 0, 0.65),
-                0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+    border-color: rgba(212, 175, 55, 0.45);
+    box-shadow: 0 28px 72px rgba(0, 0, 0, 0.85), 0 0 32px rgba(212, 175, 55, 0.15);
 }
 
 /* Titlebar */
@@ -89,61 +86,40 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 20px;
-    background: rgba(255, 255, 255, 0.04);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 14px 22px;
+    background: rgba(18, 18, 24, 0.95);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .trafficLights {
     display: flex;
     align-items: center;
     gap: 8px;
-    width: 80px;
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
-    display: inline-block;
-    transition: filter 0.2s ease;
 }
 
-.dotRed {
-    background: #ff5f56;
-    border: 1px solid #e0443e;
-}
-
-.dotYellow {
-    background: #ffbd2e;
-    border: 1px solid #dea123;
-}
-
-.dotGreen {
-    background: #27c93f;
-    border: 1px solid #1aab29;
-}
+.dotRed { background: #ef4444; }
+.dotYellow { background: #eab308; }
+.dotGreen { background: #22c55e; }
 
 .windowTitle {
-    font-family: 'JetBrains Mono', 'Fira Code', monospace;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.65);
-    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-family: var(--font-code);
 }
 
 .statusBadge {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 7px;
-    padding: 4px 12px;
-    border-radius: 50px;
-    background: rgba(34, 197, 94, 0.12);
-    border: 1px solid rgba(74, 222, 128, 0.35);
-    color: #4ade80;
-    font-size: 0.75rem;
+    gap: 8px;
+    color: #f5d061;
+    font-size: 0.82rem;
     font-weight: 600;
-    box-shadow: 0 0 12px rgba(34, 197, 94, 0.15);
 }
 
 .pulseDot {
@@ -154,34 +130,31 @@
     box-shadow: 0 0 8px #4ade80;
 }
 
-/* Sub-Bar (Location & Metadata) */
+/* Sub-Bar */
 .macSubBar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 22px;
-    background: rgba(0, 0, 0, 0.18);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7);
+    background: rgba(10, 10, 14, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.82rem;
+    color: var(--text-secondary);
 }
 
 .locationTag {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-weight: 500;
 }
 
 .mapIcon {
-    color: #38bdf8;
-    font-size: 0.95rem;
+    color: var(--accent-primary);
 }
 
 .timezoneTag {
-    font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.5);
-    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent-primary-hover);
+    font-family: var(--font-code);
 }
 
 /* Window Body */
@@ -191,28 +164,26 @@
 
 .channelsGrid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
 }
 
-/* Channel Card Pane */
 .channelCard {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 20px;
+    background: rgba(16, 16, 22, 0.7);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    border-radius: 14px;
+    padding: 22px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 18px;
-    transition: all 0.25s cubic-bezier(0.2, 0.9, 0.3, 1);
+    transition: all var(--transition-normal);
 }
 
 .channelCard:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.18);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    border-color: rgba(212, 175, 55, 0.45);
+    background: rgba(20, 20, 28, 0.8);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 .channelHeader {
@@ -221,35 +192,18 @@
     gap: 14px;
 }
 
-/* Apple Squircle Icon Box */
 .channelIconBox {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     flex-shrink: 0;
-    transition: transform 0.2s ease;
-}
-
-.channelCard:hover .channelIconBox {
-    transform: scale(1.04);
-}
-
-.phoneIconBox {
-    background: rgba(2, 132, 199, 0.15);
-    color: #38bdf8;
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.2);
-}
-
-.emailIconBox {
-    background: rgba(14, 165, 233, 0.15);
-    color: #38bdf8;
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    box-shadow: 0 4px 14px rgba(14, 165, 233, 0.2);
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: #f5d061;
 }
 
 .channelMeta {
@@ -263,125 +217,108 @@
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--accent-primary);
+    text-transform: uppercase;
 }
 
 .channelValue {
-    font-size: 1.05rem;
-    font-weight: 700;
+    font-size: 0.95rem;
+    font-weight: 600;
     color: #ffffff;
     text-decoration: none;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    transition: opacity 0.2s ease;
+    transition: color var(--transition-fast);
 }
 
 .channelValue:hover {
-    opacity: 0.85;
+    color: var(--accent-primary-hover);
 }
 
-/* Actions Row - macOS System Buttons */
 .channelActions {
     display: flex;
+    gap: 10px;
     align-items: center;
-    gap: 8px;
     flex-wrap: wrap;
 }
 
 .actionBtnPrimary {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    border-radius: 8px;
-    background: #0284c7;
-    border: 1px solid #38bdf8;
-    color: #ffffff;
-    font-size: 0.82rem;
-    font-weight: 600;
+    gap: 8px;
+    padding: 8px 18px;
+    background: var(--gradient-primary);
+    color: #060608;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: var(--border-radius-sm);
     text-decoration: none;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
+    transition: all var(--transition-normal);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
 }
 
 .actionBtnPrimary:hover {
-    background: #0ea5e9;
-    color: #ffffff;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.45);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(245, 208, 97, 0.45);
+    color: #000;
 }
 
 .actionBtnWhatsapp {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    border-radius: 8px;
-    background: #16a34a;
-    border: 1px solid #4ade80;
-    color: #ffffff;
-    font-size: 0.82rem;
+    gap: 8px;
+    padding: 8px 18px;
+    background: rgba(37, 211, 102, 0.15);
+    color: #25d366;
+    border: 1px solid rgba(37, 211, 102, 0.35);
+    font-size: 0.85rem;
     font-weight: 600;
+    border-radius: var(--border-radius-sm);
     text-decoration: none;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
+    transition: all var(--transition-normal);
 }
 
 .actionBtnWhatsapp:hover {
-    background: #22c55e;
-    color: #ffffff;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.45);
+    background: #25d366;
+    color: #060608;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
 }
 
 .actionBtnCopy {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 0.82rem;
-    font-weight: 600;
+    padding: 8px 14px;
+    background: rgba(14, 14, 18, 0.6);
+    color: #f5d061;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    font-size: 0.85rem;
+    border-radius: var(--border-radius-sm);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all var(--transition-normal);
 }
 
 .actionBtnCopy:hover {
-    background: rgba(255, 255, 255, 0.14);
-    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--accent-primary);
     color: #ffffff;
-    transform: translateY(-1px);
 }
 
-.actionBtnCopy.copied {
-    background: rgba(34, 197, 94, 0.15);
-    border-color: rgba(74, 222, 128, 0.4);
-    color: #4ade80;
+.copied {
+    background: rgba(212, 175, 55, 0.25);
+    border-color: var(--accent-primary-hover);
+    color: #f5d061;
 }
 
 .checkIcon {
-    color: #4ade80;
+    color: #f5d061;
 }
 
-/* ==========================================================================
-   Responsive Breakpoints
-   ========================================================================== */
-@media (max-width: 768px) {
-    .macTitlebar {
-        padding: 12px 16px;
-    }
-
-    .windowTitle {
-        display: none;
-    }
-
-    .channelsGrid {
-        grid-template-columns: 1fr;
-        gap: 14px;
+@media (max-width: 640px) {
+    .macTitlebar, .macSubBar {
+        padding: 10px 14px;
     }
 
     .windowBody {
@@ -390,17 +327,5 @@
 
     .channelCard {
         padding: 16px;
-    }
-
-    .channelValue {
-        font-size: 0.95rem;
-    }
-
-    .actionBtnPrimary,
-    .actionBtnWhatsapp,
-    .actionBtnCopy {
-        flex: 1;
-        justify-content: center;
-        padding: 9px 10px;
     }
 }

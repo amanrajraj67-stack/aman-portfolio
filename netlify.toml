@@ -1,0 +1,10 @@
+# Netlify configuration for AmanPortfolio monorepo
+[build]
+  base = "frontend"
+  publish = "dist"
+  command = "npm run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

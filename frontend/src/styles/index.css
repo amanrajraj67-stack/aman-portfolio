@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 @import './variables.css';
 @import './reset.css';
 @import './animations.css';
@@ -8,6 +8,12 @@
 *::before,
 *::after {
     font-family: var(--font-primary);
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-primary);
 }
 
 body {
@@ -18,11 +24,15 @@ body {
     line-height: var(--line-height-normal);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    transition: background-color var(--transition-normal), color var(--transition-normal);
     position: relative;
+    overflow-x: hidden;
 }
 
-/* Big Crisp Grid */
+/* ==========================================================================
+   Aesthetic Background Grid & Interactive Cursor Spotlight
+   ========================================================================== */
+
+/* High-precision 48px geometric grid */
 body::before {
     content: '';
     position: fixed;
@@ -30,56 +40,61 @@ body::before {
     pointer-events: none;
     z-index: -2;
     background-image: 
-        linear-gradient(to right, var(--bg-grid-color, rgba(255, 255, 255, 0.025)) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--bg-grid-color, rgba(255, 255, 255, 0.025)) 1px, transparent 1px);
-    background-size: 110px 110px;
+        linear-gradient(to right, var(--bg-grid-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--bg-grid-color) 1px, transparent 1px);
+    background-size: 48px 48px;
     background-position: center;
 }
 
-/* Moving Light Beam - softened subtle glow through the grid lines */
+/* Interactive Cursor Spotlight & Ambient Gold Aura */
 body::after {
     content: '';
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: -1;
-    background: linear-gradient(
-        125deg,
-        transparent 0%,
-        transparent 40%,
-        rgba(255, 255, 255, 0.09) 48%,
-        rgba(96, 165, 250, 0.14) 50%,
-        rgba(255, 255, 255, 0.09) 52%,
-        transparent 60%,
-        transparent 100%
-    );
-    background-size: 300% 300%;
+    background: 
+        radial-gradient(circle 380px at var(--mouse-x, 50vw) var(--mouse-y, 30vh), rgba(212, 175, 55, 0.16) 0%, rgba(212, 175, 55, 0.03) 45%, transparent 75%),
+        radial-gradient(circle 750px at 50% 120px, rgba(212, 175, 55, 0.08) 0%, transparent 65%),
+        radial-gradient(circle 600px at 85% 70%, rgba(245, 208, 97, 0.04) 0%, transparent 60%);
     
-    /* Strict grid mask: only the 1px lines can show the shine */
+    /* Strict hairline grid mask so the light gleams across grid intersections */
     mask-image: 
         linear-gradient(to right, black 1px, transparent 1px),
-        linear-gradient(to bottom, black 1px, transparent 1.5px);
+        linear-gradient(to bottom, black 1px, transparent 1px);
     -webkit-mask-image: 
         linear-gradient(to right, black 1px, transparent 1px),
         linear-gradient(to bottom, black 1px, transparent 1px);
-    mask-size: 110px 110px;
-    -webkit-mask-size: 110px 110px;
+    mask-size: 48px 48px;
+    -webkit-mask-size: 48px 48px;
     mask-position: center;
     -webkit-mask-position: center;
-    
-    animation: lineShineSweep 8s ease-in-out infinite;
 }
 
-@keyframes lineShineSweep {
+/* Text Shimmer Effect */
+@keyframes textGoldShimmer {
     0% {
-        background-position: 150% 150%;
-    }
-    50% {
-        background-position: 50% 50%;
+        background-position: 0% 50%;
     }
     100% {
-        background-position: -50% -50%;
+        background-position: 200% 50%;
     }
+}
+
+.goldShimmerText {
+    background: linear-gradient(
+        120deg,
+        #f5d061 0%,
+        #ffffff 30%,
+        #d4af37 60%,
+        #ffffff 85%,
+        #f5d061 100%
+    );
+    background-size: 250% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textGoldShimmer 8s linear infinite;
+    display: inline-block;
 }
 
 /* Container */
@@ -87,11 +102,13 @@ body::after {
     max-width: var(--container-xl);
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
+    width: 100%;
 }
 
 /* Section Spacing */
 section {
     padding: var(--spacing-4xl) 0;
+    position: relative;
 }
 
 /* Headings */
@@ -101,9 +118,12 @@ h3,
 h4,
 h5,
 h6 {
+    font-family: var(--font-primary);
     font-weight: var(--font-weight-bold);
     line-height: var(--line-height-tight);
     margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
 }
 
 h1 {
@@ -130,11 +150,29 @@ h6 {
     font-size: var(--font-size-lg);
 }
 
+/* Section Badges */
+.sectionBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.28);
+    border-radius: var(--border-radius-full);
+    color: var(--accent-primary-hover);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    box-shadow: 0 0 16px rgba(212, 175, 55, 0.1);
+}
+
 /* Links */
 a {
     color: var(--accent-primary);
     text-decoration: none;
-    transition: color var(--transition-fast);
+    transition: color var(--transition-fast), border-color var(--transition-fast);
 }
 
 a:hover {
@@ -148,37 +186,43 @@ a:hover {
     justify-content: center;
     padding: 0.75rem 2rem;
     font-size: var(--font-size-base);
-    font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-semibold);
     border: none;
     border-radius: var(--border-radius-md);
     cursor: pointer;
-    transition: all var(--transition-normal);
+    transition: all var(--transition-smooth);
     font-family: inherit;
     text-decoration: none;
     gap: var(--spacing-sm);
+    letter-spacing: 0.02em;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-primary-hover));
-    color: white;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    background: var(--gradient-primary);
+    color: #050507;
+    box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35);
+    font-weight: 700;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
-    color: black;
+    box-shadow: 0 6px 24px rgba(245, 208, 97, 0.55);
+    color: #000;
 }
 
 .btn-secondary {
-    background: transparent;
+    background: rgba(14, 14, 18, 0.6);
     color: var(--accent-primary);
-    border: 2px solid var(--accent-primary);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(8px);
 }
 
 .btn-secondary:hover {
-    background: var(--accent-primary);
-    color: white;
+    background: var(--accent-primary-light);
+    border-color: var(--accent-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.25);
+    transform: translateY(-2px);
 }
 
 .btn-sm {

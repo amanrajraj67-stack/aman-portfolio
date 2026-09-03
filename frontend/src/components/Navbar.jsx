@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaMoon, FaSun } from 'react-icons/fa';
-import { useTheme } from '../context/ThemeContext';
+import portfolioConfig from '../config/portfolioConfig';
 import styles from '../styles/components/Navbar.module.css';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
-    const { theme, toggleTheme } = useTheme();
     const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 50) {
+            if (window.scrollY > 20) {
                 setScrolled(true);
             } else {
                 setScrolled(false);
@@ -23,62 +21,81 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Close mobile menu on route change
+    useEffect(() => {
+        setMenuOpen(false);
+    }, [location.pathname]);
+
     const isActive = (path) => {
         return location.pathname === path;
     };
 
     return (
-        <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
-            <div className="container">
-                <div className={styles.navContent}>
-                    <Link to="/" className={styles.logo}>
-                        <img src="/logo.png" alt="Logo" className={styles.logoImage} />
+        <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
+            <div className={styles.navContainer}>
+                {/* Brand Logo */}
+                <Link to="/" className={styles.logo}>
+                    <span className={styles.logoText}>
+                        {portfolioConfig.name || 'AMAN'}
+                        <span className={styles.goldDot}>.</span>
+                    </span>
+                </Link>
+
+                {/* Desktop Nav Links */}
+                <nav className={`${styles.navLinks} ${menuOpen ? styles.navLinksOpen : ''}`}>
+                    <Link
+                        to="/"
+                        className={`${styles.navLink} ${isActive('/') ? styles.activeLink : ''}`}
+                    >
+                        Home
+                    </Link>
+                    <Link
+                        to="/projects"
+                        className={`${styles.navLink} ${isActive('/projects') ? styles.activeLink : ''}`}
+                    >
+                        Projects
+                    </Link>
+                    <Link
+                        to="/achievements"
+                        className={`${styles.navLink} ${isActive('/achievements') ? styles.activeLink : ''}`}
+                    >
+                        Achievements
+                    </Link>
+                    <Link
+                        to="/blog"
+                        className={`${styles.navLink} ${isActive('/blog') ? styles.activeLink : ''}`}
+                    >
+                        Blog
                     </Link>
 
-                    <div className={`${styles.navLinks} ${menuOpen ? styles.active : ''}`}>
-                        <Link
-                            to="/"
-                            className={isActive('/') ? styles.activeLink : ''}
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            Home
-                        </Link>
-                        <Link
-                            to="/projects"
-                            className={isActive('/projects') ? styles.activeLink : ''}
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            Projects
-                        </Link>
-                        <Link
-                            to="/achievements"
-                            className={isActive('/achievements') ? styles.activeLink : ''}
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            Achievements
-                        </Link>
-                        <Link
-                            to="/blog"
-                            className={isActive('/blog') ? styles.activeLink : ''}
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            Blog
+                    {/* Mobile Only CTA */}
+                    <div className={styles.mobileCtaWrapper}>
+                        <Link to="/contact" className={styles.mobileCtaBtn}>
+                            Let's Connect
                         </Link>
                     </div>
+                </nav>
 
-                    <div className={styles.navActions}>
-                        <div
-                            className={`${styles.hamburger} ${menuOpen ? styles.active : ''}`}
-                            onClick={() => setMenuOpen(!menuOpen)}
-                        >
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
+                {/* Right Action CTA & Mobile Toggle */}
+                <div className={styles.navActions}>
+                    <Link to="/contact" className={styles.headerCta}>
+                        <span>Let's Talk</span>
+                        <span className={styles.ctaArrow}>&rarr;</span>
+                    </Link>
+
+                    <button
+                        className={`${styles.hamburger} ${menuOpen ? styles.hamburgerActive : ''}`}
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        aria-label="Toggle Navigation Menu"
+                        aria-expanded={menuOpen}
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </div>
-        </nav>
+        </header>
     );
 };
 

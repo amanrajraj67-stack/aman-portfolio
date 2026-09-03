@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ScrollProgress from '../components/ScrollProgress';
 import ScrollToTop from '../components/ScrollToTop';
+import BlogShowcaseWip from '../components/BlogShowcaseWip';
 import styles from '../styles/pages/BlogPage.module.css';
 import { getFileURL, FALLBACK_IMAGE } from '../utils/urlHelper';
 
@@ -53,10 +54,7 @@ const BlogPage = () => {
                             <p>Loading articles...</p>
                         </div>
                     ) : posts.length === 0 ? (
-                        <div className={styles.empty}>
-                            <p>No blog posts published yet. Check back soon!</p>
-                            <Link to="/" className={styles.homeBtn}>Back to Home</Link>
-                        </div>
+                        <BlogShowcaseWip />
                     ) : (
                         <div className={styles.postsGrid}>
                             {posts.map((post) => (

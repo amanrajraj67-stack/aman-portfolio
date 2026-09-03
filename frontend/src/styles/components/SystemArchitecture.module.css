@@ -1,0 +1,409 @@
+.visualizerCard {
+    width: 100%;
+    max-width: 580px;
+    background: rgba(10, 10, 14, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.85), 0 0 32px rgba(212, 175, 55, 0.1);
+    transition: all var(--transition-normal);
+}
+
+.visualizerCard:hover {
+    border-color: rgba(212, 175, 55, 0.45);
+    box-shadow: 0 28px 72px rgba(0, 0, 0, 0.95), 0 0 40px rgba(212, 175, 55, 0.16);
+}
+
+/* Header */
+.windowHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 18px;
+    background: rgba(16, 16, 22, 0.95);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.trafficLights {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dotRed { background: #ef4444; }
+.dotYellow { background: #eab308; }
+.dotGreen { background: #22c55e; }
+
+.windowFilename {
+    margin-left: 10px;
+    font-size: 0.8rem;
+    font-family: var(--font-code);
+    color: var(--text-muted);
+}
+
+.headerControls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.statusPill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: var(--border-radius-full);
+}
+
+.statusLiveDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 6px #22c55e;
+}
+
+.statusText {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #4ade80;
+    letter-spacing: 0.05em;
+    font-family: var(--font-code);
+}
+
+.simulateBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    color: #f5d061;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.74rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-code);
+    transition: all var(--transition-fast);
+}
+
+.simulateBtn:hover:not(:disabled) {
+    background: var(--gradient-primary);
+    color: #050507;
+    border-color: transparent;
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+    transform: translateY(-1px);
+}
+
+.simulating {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.boltIcon {
+    font-size: 0.75rem;
+}
+
+/* Architecture Canvas */
+.canvas {
+    position: relative;
+    padding: 24px 20px;
+    background: rgba(6, 6, 9, 0.75);
+    min-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.connectionsSvg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.flowPath {
+    stroke: rgba(212, 175, 55, 0.2);
+    stroke-width: 2;
+    stroke-dasharray: 4 4;
+    transition: stroke 0.3s ease;
+}
+
+.flowPathActive {
+    stroke: #f5d061;
+    stroke-width: 2.5;
+    filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.8));
+}
+
+.pulsingDataPacket {
+    fill: #f5d061;
+    filter: drop-shadow(0 0 6px rgba(245, 208, 97, 0.9));
+}
+
+.nodesContainer {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 16px;
+}
+
+/* Individual Node */
+.node {
+    background: rgba(14, 14, 20, 0.85);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+    padding: 10px 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all var(--transition-normal);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.node:hover {
+    border-color: rgba(212, 175, 55, 0.5);
+    background: rgba(20, 20, 28, 0.95);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), 0 0 14px rgba(212, 175, 55, 0.2);
+}
+
+.nodeActive {
+    border-color: var(--accent-primary-hover) !important;
+    background: rgba(24, 24, 32, 0.95) !important;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4), 0 4px 18px rgba(0, 0, 0, 0.8) !important;
+    transform: scale(1.04);
+}
+
+.nodeClient {
+    width: 130px;
+}
+
+.nodeGateway {
+    width: 135px;
+}
+
+.rightBranches {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.nodeBranch {
+    width: 140px;
+}
+
+.nodeIconWrapper {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    color: #f5d061;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.nodeMeta {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.nodeTag {
+    font-size: 0.64rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.nodeName {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.nodeLatency {
+    font-size: 0.68rem;
+    color: #4ade80;
+    font-family: var(--font-code);
+}
+
+/* Inspector Panel */
+.inspectorPanel {
+    padding: 16px 20px;
+    background: rgba(14, 14, 20, 0.95);
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+    transition: all var(--transition-fast);
+}
+
+.inspectorHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.inspectorTitleGroup {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.inspectorIcon {
+    font-size: 1.1rem;
+    color: var(--accent-primary);
+}
+
+.inspectorTitle {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    display: block;
+}
+
+.inspectorSubtitle {
+    font-size: 0.76rem;
+    color: var(--text-secondary);
+    display: block;
+}
+
+.inspectorBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #4ade80;
+    font-family: var(--font-code);
+}
+
+.checkIcon {
+    font-size: 0.78rem;
+}
+
+.inspectorDescription {
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.metricsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.metricItem {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: rgba(8, 8, 12, 0.6);
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.metricKey {
+    font-size: 0.66rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.metricVal {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #f5d061;
+    font-family: var(--font-code);
+}
+
+/* Ribbon Footer */
+.ribbonFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 16px;
+    background: rgba(8, 8, 12, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.74rem;
+    font-family: var(--font-code);
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.ribbonItem {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.ribbonLabel {
+    color: var(--text-muted);
+}
+
+.ribbonValue {
+    color: #e4e4e7;
+    font-weight: 600;
+}
+
+.ribbonValueSuccess {
+    color: #4ade80;
+    font-weight: 600;
+}
+
+.ribbonDivider {
+    color: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 640px) {
+    .nodesContainer {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .nodeClient, .nodeGateway, .nodeBranch {
+        width: 100%;
+    }
+
+    .rightBranches {
+        width: 100%;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .connectionsSvg {
+        display: none;
+    }
+
+    .metricsGrid {
+        grid-template-columns: 1fr;
+    }
+}

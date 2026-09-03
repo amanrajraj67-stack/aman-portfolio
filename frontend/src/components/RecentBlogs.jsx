@@ -2,14 +2,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight, FaCalendar } from 'react-icons/fa';
 import { useData } from '../context/DataContext';
+import BlogShowcaseWip from './BlogShowcaseWip';
 import styles from '../styles/components/RecentBlogs.module.css';
 import { getFileURL, FALLBACK_IMAGE } from '../utils/urlHelper';
 
 const RecentBlogs = () => {
     const { recentBlogs: posts, loadingBlogs: loading } = useData();
 
-    if (loading || !posts || posts.length === 0) {
+    if (loading) {
         return null;
+    }
+
+    if (!posts || posts.length === 0) {
+        return (
+            <section className={styles.recentBlogs} id="blogs">
+                <div className="container">
+                    <BlogShowcaseWip isHomePage={true} />
+                </div>
+            </section>
+        );
     }
 
     return (
