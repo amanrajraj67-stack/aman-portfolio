@@ -317,15 +317,53 @@
 }
 
 @media (max-width: 640px) {
+    .macWindow {
+        border-radius: 16px;
+    }
+
     .macTitlebar, .macSubBar {
         padding: 10px 14px;
+        flex-wrap: wrap;
+        gap: 6px;
     }
 
     .windowBody {
-        padding: 16px;
+        padding: 16px 14px;
+    }
+
+    .channelsGrid {
+        grid-template-columns: 1fr;
+        gap: 14px;
     }
 
     .channelCard {
-        padding: 16px;
+        padding: 16px 14px;
+        border-radius: 14px;
+    }
+
+    .channelActions {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .actionBtnPrimary, .actionBtnWhatsapp, .actionBtnCopy {
+        width: 100%;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .channelValue {
+        font-size: 0.86rem;
+    }
+}
+
+@media (max-width: 440px) {
+    .windowBody {
+        padding: 12px 10px;
+    }
+
+    .channelCard {
+        padding: 14px 12px;
     }
 }

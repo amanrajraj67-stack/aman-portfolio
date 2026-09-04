@@ -783,3 +783,70 @@
         grid-template-columns: 1fr;
     }
 }
+
+@media (max-width: 640px) {
+    .wipBanner {
+        padding: 24px 16px;
+        border-radius: 18px;
+    }
+
+    .wipTitle {
+        font-size: 1.35rem;
+    }
+
+    .wipDescription {
+        font-size: 0.88rem;
+        margin-bottom: 20px;
+    }
+
+    .wipCard {
+        padding: 18px 16px;
+        border-radius: 16px;
+    }
+
+    .wipCardTitle {
+        font-size: 1.05rem;
+    }
+
+    .wipCardText {
+        font-size: 0.84rem;
+    }
+
+    .wipCardBtn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .filterContainer {
+        gap: 6px;
+    }
+
+    .filterBtn {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 440px) {
+    .wipBanner {
+        padding: 18px 12px;
+    }
+
+    .wipStatsGroup {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .roadmapRow {
+        padding: 8px 10px;
+        gap: 8px;
+    }
+
+    .roadmapName {
+        font-size: 0.78rem;
+    }
+
+    .roadmapSub {
+        font-size: 0.68rem;
+    }
+}

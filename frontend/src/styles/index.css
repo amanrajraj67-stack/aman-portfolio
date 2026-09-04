@@ -265,3 +265,36 @@ a:hover {
         max-width: var(--container-xl);
     }
 }
+
+/* Mobile Screens (< 640px) */
+@media (max-width: 640px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    section {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .sectionBadge {
+        font-size: 0.72rem;
+        padding: 4px 12px;
+    }
+
+    /* Prevent accidental overflow */
+    body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+}
+
+/* Extra Small Phones (< 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    section {
+        padding: var(--spacing-xl) 0;
+    }
+}

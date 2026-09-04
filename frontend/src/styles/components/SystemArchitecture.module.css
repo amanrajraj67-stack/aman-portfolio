@@ -384,9 +384,29 @@
 }
 
 @media (max-width: 640px) {
+    .card {
+        border-radius: 16px;
+    }
+
+    .header {
+        padding: 10px 14px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .trafficBtn {
+        padding: 4px 10px;
+        font-size: 0.72rem;
+    }
+
+    .canvasArea {
+        padding: 16px 12px;
+        min-height: auto;
+    }
+
     .nodesContainer {
         flex-direction: column;
-        gap: 14px;
+        gap: 12px;
     }
 
     .nodeClient, .nodeGateway, .nodeBranch {
@@ -405,5 +425,42 @@
 
     .metricsGrid {
         grid-template-columns: 1fr;
+    }
+
+    .ribbon {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px 12px;
+        padding: 10px 12px;
+        font-size: 0.72rem;
+    }
+
+    .ribbonDivider {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .rightBranches {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .node {
+        padding: 8px 12px;
+    }
+
+    .nodeIconWrapper {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .nodeName {
+        font-size: 0.8rem;
+    }
+
+    .inspectorDrawer {
+        padding: 14px;
     }
 }

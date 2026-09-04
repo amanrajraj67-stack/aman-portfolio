@@ -334,3 +334,52 @@
         grid-template-columns: 1fr;
     }
 }
+
+@media (max-width: 640px) {
+    .wipHeroCard {
+        padding: 22px 16px;
+        border-radius: 18px;
+    }
+
+    .wipHeroTitle {
+        font-size: 1.35rem;
+    }
+
+    .wipHeroDesc {
+        font-size: 0.88rem;
+    }
+
+    .buildConsole {
+        font-size: 0.76rem;
+    }
+
+    .consoleBody {
+        padding: 12px 14px;
+    }
+
+    .pipelineCard {
+        padding: 16px;
+    }
+
+    .actionButtonsRow {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .githubBtn, .collabBtn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 440px) {
+    .wipHeroCard {
+        padding: 16px 12px;
+    }
+
+    .pipelineProjectTitle {
+        font-size: 0.98rem;
+    }
+}
