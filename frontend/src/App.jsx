@@ -14,6 +14,7 @@ import { DataProvider } from './context/DataContext';
 
 
 import ScrollToTopOnMount from './components/ScrollToTopOnMount';
+import ParticleBackground from './components/ParticleBackground';
 import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
 import EngineeringTimelinePage from './pages/EngineeringTimelinePage';
@@ -26,6 +27,7 @@ function App() {
         <DataProvider>
           <Router>
             <ScrollToTopOnMount />
+            <ParticleBackground />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />

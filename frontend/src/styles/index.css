@@ -71,6 +71,11 @@ body::after {
     -webkit-mask-position: center;
 }
 
+main {
+    position: relative;
+    z-index: 1;
+}
+
 /* Text Shimmer Effect */
 @keyframes textGoldShimmer {
     0% {
