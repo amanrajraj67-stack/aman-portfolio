@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram, FaJava } from 'react-icons/fa';
 import { SiLeetcode, SiCodeforces, SiExpress, SiTailwindcss, SiMongodb, SiHtml5, SiCss3, SiJavascript, SiC, SiPython, SiNodedotjs, SiReact } from 'react-icons/si';
 import useTypingEffect from '../hooks/useTypingEffect';
 import portfolioConfig from '../config/portfolioConfig';
@@ -15,16 +15,17 @@ const Hero = () => {
     const { text: typingText, cursor } = useTypingEffect(titles, 80, 40, 2000);
 
     const techIcons = [
-        { Icon: SiHtml5, name: "HTML" },
-        { Icon: SiCss3, name: "CSS" },
-        { Icon: SiJavascript, name: "JavaScript" },
-        { Icon: SiPython, name: "Python" },
-        { Icon: SiC, name: "C" },
-        { Icon: SiNodedotjs, name: "Node.js" },
-        { Icon: SiExpress, name: "Express.js" },
-        { Icon: SiReact, name: "React" },
-        { Icon: SiTailwindcss, name: "Tailwind CSS" },
-        { Icon: SiMongodb, name: "MongoDB" },
+        { Icon: SiHtml5, name: "HTML", color: "#E34F26" },
+        { Icon: SiCss3, name: "CSS", color: "#1572B6" },
+        { Icon: SiJavascript, name: "JavaScript", color: "#F7DF1E" },
+        { Icon: FaJava, name: "Java", color: "#EA2D2E" },
+        { Icon: SiPython, name: "Python", color: "#38BDF8" },
+        { Icon: SiC, name: "C", color: "#60A5FA" },
+        { Icon: SiNodedotjs, name: "Node.js", color: "#68A063" },
+        { Icon: SiExpress, name: "Express.js", color: "#F5D061" },
+        { Icon: SiReact, name: "React", color: "#61DAFB" },
+        { Icon: SiTailwindcss, name: "Tailwind CSS", color: "#06B6D4" },
+        { Icon: SiMongodb, name: "MongoDB", color: "#47A248" },
     ];
 
     const hasAnySocial = Boolean(
@@ -140,8 +141,13 @@ const Hero = () => {
                             <div className={styles.techMarquee}>
                                 <div className={styles.techTrack}>
                                     {techIcons.concat(techIcons).map((tech, index) => (
-                                        <div key={index} className={styles.techIconItem} title={tech.name}>
-                                            <tech.Icon />
+                                        <div 
+                                            key={index} 
+                                            className={styles.techIconItem} 
+                                            title={tech.name}
+                                            style={{ '--tech-color': tech.color }}
+                                        >
+                                            <tech.Icon style={{ color: tech.color }} className={styles.techIconSvg} />
                                             <span className={styles.techIconName}>{tech.name}</span>
                                         </div>
                                     ))}

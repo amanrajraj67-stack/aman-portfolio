@@ -318,26 +318,41 @@
 .techIconItem {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 6px 14px;
-    background: rgba(14, 14, 18, 0.6);
-    border: 1px solid rgba(212, 175, 55, 0.15);
+    gap: 9px;
+    padding: 7px 15px;
+    background: rgba(12, 12, 18, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--border-radius-full);
     color: #fcfcfd;
-    font-size: 0.85rem;
+    font-size: 0.86rem;
     transition: all var(--transition-fast);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    cursor: default;
+}
+
+.techIconSvg {
+    font-size: 1.15rem;
+    flex-shrink: 0;
+    transition: transform var(--transition-fast), filter var(--transition-fast);
 }
 
 .techIconItem:hover {
-    border-color: var(--accent-primary);
-    background: rgba(212, 175, 55, 0.1);
-    color: var(--accent-primary-hover);
+    border-color: var(--tech-color, var(--accent-primary));
+    background: rgba(18, 18, 26, 0.95);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7), 0 0 14px var(--tech-color, rgba(212, 175, 55, 0.3));
+}
+
+.techIconItem:hover .techIconSvg {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 6px var(--tech-color, rgba(212, 175, 55, 0.5)));
 }
 
 .techIconName {
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #e4e4e7;
+    letter-spacing: 0.01em;
 }
 
 /* Right Column: Interactive System Architecture Visualizer */
