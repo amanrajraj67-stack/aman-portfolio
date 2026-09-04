@@ -16,6 +16,7 @@ import { DataProvider } from './context/DataContext';
 import ScrollToTopOnMount from './components/ScrollToTopOnMount';
 import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
+import EngineeringTimelinePage from './pages/EngineeringTimelinePage';
 import './styles/index.css';
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
+              <Route path="/timeline" element={<EngineeringTimelinePage />} />
+              <Route path="/engineering-timeline" element={<EngineeringTimelinePage />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route
                 path="/admin/dashboard"

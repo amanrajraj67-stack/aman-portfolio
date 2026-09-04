@@ -43,6 +43,7 @@ const Footer = () => {
                             <Link to="/projects" className={styles.navItem}>Projects</Link>
                             <Link to="/achievements" className={styles.navItem}>Journey</Link>
                             <Link to="/blog" className={styles.navItem}>Insights</Link>
+                            <Link to="/timeline" className={styles.navItem}>Timeline</Link>
                             <a href="#contact" className={styles.navItem}>Contact</a>
                         </div>
                     </div>

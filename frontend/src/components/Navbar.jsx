@@ -67,6 +67,13 @@ const Navbar = () => {
                     >
                         Insights
                     </Link>
+                    <Link
+                        to="/timeline"
+                        className={`${styles.navLink} ${isActive('/timeline') || isActive('/engineering-timeline') ? styles.activeLink : ''}`}
+                    >
+                        <span className={styles.fullNavText}>Engineering Timeline</span>
+                        <span className={styles.shortNavText}>Timeline</span>
+                    </Link>
 
                     {/* Mobile Only CTA */}
                     <div className={styles.mobileCtaWrapper}>

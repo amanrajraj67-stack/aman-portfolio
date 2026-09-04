@@ -3,7 +3,6 @@ import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import FeaturedProjects from '../components/FeaturedProjects';
 import RecentBlogs from '../components/RecentBlogs';
-import EngineeringTimeline from '../components/EngineeringTimeline';
 import About from '../components/About';
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
@@ -41,7 +40,6 @@ const Home = () => {
                 <Hero />
                 <FeaturedProjects />
                 <RecentBlogs />
-                <EngineeringTimeline />
                 <About />
                 <ContactForm />
             </main>
