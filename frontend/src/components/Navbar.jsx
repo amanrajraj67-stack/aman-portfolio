@@ -59,13 +59,13 @@ const Navbar = () => {
                         to="/achievements"
                         className={`${styles.navLink} ${isActive('/achievements') ? styles.activeLink : ''}`}
                     >
-                        Achievements
+                        Journey
                     </Link>
                     <Link
                         to="/blog"
                         className={`${styles.navLink} ${isActive('/blog') ? styles.activeLink : ''}`}
                     >
-                        Blog
+                        Insights
                     </Link>
 
                     {/* Mobile Only CTA */}

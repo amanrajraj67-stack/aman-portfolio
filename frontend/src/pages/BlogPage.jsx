@@ -42,7 +42,7 @@ const BlogPage = () => {
                 <div className="container">
                     <div className={styles.header}>
                         <span className={styles.badge}>Articles & Guides</span>
-                        <h1 className={styles.title}>Blog & Insights</h1>
+                        <h1 className={styles.title}>Insights & Engineering Logs</h1>
                         <p className={styles.subtitle}>
                             Thoughts, deep dives, architecture breakdowns, and tech tutorials.
                         </p>

@@ -90,7 +90,7 @@ const Achievements = () => {
             <div className={styles.container}>
                 {/* Clean Aesthetic Header */}
                 <div className={`${styles.sectionHeader} animate-on-scroll`}>
-                    <h2 className={styles.title}>Achievements & Milestones</h2>
+                    <h2 className={styles.title}>Journey & Milestones</h2>
                     <p className={styles.subtitle}>
                         Chronological journey through competitions, coding milestones, and recognitions.
                     </p>
