@@ -133,20 +133,29 @@
     border-bottom: 1px solid rgba(212, 175, 55, 0.1);
 }
 
-.consoleDots {
+.consolePromptBadge {
     display: flex;
+    align-items: center;
     gap: 6px;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 3px 8px;
+    border-radius: 6px;
 }
 
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
+.terminalIndicator {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #f5d061;
+    font-family: var(--font-code);
 }
 
-.dotRed { background: #ef4444; }
-.dotYellow { background: #eab308; }
-.dotGreen { background: #22c55e; }
+.envTag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
 
 .consoleTitle {
     font-size: 0.72rem;

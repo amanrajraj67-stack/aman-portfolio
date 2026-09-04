@@ -76,10 +76,15 @@ const SystemArchitecture = () => {
         <div className={styles.visualizerCard}>
             {/* Window Header */}
             <div className={styles.windowHeader}>
-                <div className={styles.trafficLights}>
-                    <span className={`${styles.dot} ${styles.dotRed}`}></span>
-                    <span className={`${styles.dot} ${styles.dotYellow}`}></span>
-                    <span className={`${styles.dot} ${styles.dotGreen}`}></span>
+                <div className={styles.telemetryBadge}>
+                    <div className={styles.signalWave} title="Live Telemetry Stream">
+                        <span className={styles.waveBar}></span>
+                        <span className={styles.waveBar}></span>
+                        <span className={styles.waveBar}></span>
+                        <span className={styles.waveBar}></span>
+                    </div>
+                    <span className={styles.clusterTag}>SYS://NODE_01</span>
+                    <span className={styles.divider}>•</span>
                     <span className={styles.windowFilename}>system_topology.live</span>
                 </div>
 

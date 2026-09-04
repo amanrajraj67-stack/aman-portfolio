@@ -51,10 +51,9 @@ const Projects = () => {
                             {/* Simulated Live Build Terminal */}
                             <div className={styles.buildConsole}>
                                 <div className={styles.consoleHeader}>
-                                    <div className={styles.consoleDots}>
-                                        <span className={`${styles.dot} ${styles.dotRed}`}></span>
-                                        <span className={`${styles.dot} ${styles.dotYellow}`}></span>
-                                        <span className={`${styles.dot} ${styles.dotGreen}`}></span>
+                                    <div className={styles.consolePromptBadge}>
+                                        <span className={styles.terminalIndicator}>&gt;_</span>
+                                        <span className={styles.envTag}>ENV:PROD</span>
                                     </div>
                                     <span className={styles.consoleTitle}>deploy-pipeline.sh</span>
                                 </div>

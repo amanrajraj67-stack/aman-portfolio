@@ -28,28 +28,59 @@
     gap: 10px;
 }
 
-.trafficLights {
-    display: flex;
+.telemetryBadge {
+    display: inline-flex;
     align-items: center;
-    gap: 7px;
+    gap: 10px;
+    background: rgba(212, 175, 55, 0.06);
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    padding: 5px 14px;
+    border-radius: 20px;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
 }
 
-.dot {
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    display: inline-block;
+.signalWave {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 14px;
+    padding-bottom: 1px;
 }
 
-.dotRed { background: #ef4444; }
-.dotYellow { background: #eab308; }
-.dotGreen { background: #22c55e; }
+.waveBar {
+    width: 2.5px;
+    background: linear-gradient(180deg, #f5d061, #d4af37);
+    border-radius: 2px;
+    animation: wavePulse 1.2s ease-in-out infinite alternate;
+}
+
+.waveBar:nth-child(1) { height: 6px; animation-delay: 0.1s; }
+.waveBar:nth-child(2) { height: 13px; animation-delay: 0.35s; }
+.waveBar:nth-child(3) { height: 8px; animation-delay: 0.2s; }
+.waveBar:nth-child(4) { height: 14px; animation-delay: 0.5s; }
+
+@keyframes wavePulse {
+    0% { height: 4px; opacity: 0.5; }
+    100% { height: 13px; opacity: 1; box-shadow: 0 0 6px rgba(245, 208, 97, 0.7); }
+}
+
+.clusterTag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #f5d061;
+    font-family: var(--font-code);
+}
+
+.divider {
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 0.75rem;
+}
 
 .windowFilename {
-    margin-left: 10px;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-family: var(--font-code);
-    color: var(--text-muted);
+    color: var(--text-secondary);
 }
 
 .headerControls {
